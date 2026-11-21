@@ -71,12 +71,12 @@ runs:
         # The release this action runs and the SHA-256 of each archive, from
         # that release's SHA256SUMS. Written by packaging/action.sh in
         # meSingh/polinrider-scanner after each release. Not edited by hand.
-        POLINRIDER_VERSION: "3.2.0"
+        POLINRIDER_VERSION: "3.3.0"
         POLINRIDER_INDICATORS_REVIEWED: "2026-11-16"
-        POLINRIDER_SHA256_LINUX_X86_64: "a9538916ab50797d0ae87b1834122fce4139f30aeae1800087aa6e487c6262c9"
-        POLINRIDER_SHA256_LINUX_ARM64: "a0d27905025ba8ccbbf1dfd2b173ec5f21534c3a7c75ec86b9e57f68cffcf06b"
-        POLINRIDER_SHA256_MACOS_ARM64: "e6b5691cef5885d27009ac538e1d79e83b372b4a0da6d53f0ec65c7cce4ab366"
-        POLINRIDER_SHA256_MACOS_X86_64: "a87d3bba505274c3f03981f2d63520f64eaad2cefe117e65d491f18f17b6168a"
+        POLINRIDER_SHA256_LINUX_X86_64: "94ab8a93659a0f48a3e122e9ad2469b705f333b00de6d1c19a88f48d3afa9dd5"
+        POLINRIDER_SHA256_LINUX_ARM64: "75428305a0f3db501e7e525c5a81f967feb6dd1829eca1c3c340e4e062370f43"
+        POLINRIDER_SHA256_MACOS_ARM64: "d81b6196e5034a9ee39adfc4e153d51c5e63f0e255c325a87fee005e9f2891dd"
+        POLINRIDER_SHA256_MACOS_X86_64: "255e1b2d06f5a68f90c13d51678d2242cdef00e97b01cd9e40dc06ff64059a37"
         POLINRIDER_RELEASES: https://github.com/meSingh/polinrider-scanner/releases/download
       run: bash "$GITHUB_ACTION_PATH/scripts/install.sh"
 
