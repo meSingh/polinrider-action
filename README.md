@@ -198,10 +198,14 @@ scanner's release on GitHub and the hashes in `action.yml`. The hashes are
 taken from the release's `SHA256SUMS` by the scanner's release workflow, which
 opens a pull request here for each release. Check any of them yourself:
 
+The polinrider version is the `POLINRIDER_VERSION` line in `action.yml` at the
+SHA you pin, and each release's notes name it. In a checkout of that SHA:
+
 ```bash
-gh release download v3.1.0 --repo meSingh/polinrider-scanner --pattern SHA256SUMS --pattern 'polinrider-v3.1.0-linux-x86_64.tar.gz'
+VERSION=$(sed -n 's/.*POLINRIDER_VERSION: "\(.*\)"/\1/p' action.yml)
+gh release download "v$VERSION" --repo meSingh/polinrider-scanner --pattern SHA256SUMS --pattern "polinrider-v$VERSION-linux-x86_64.tar.gz"
 sha256sum -c SHA256SUMS --ignore-missing
-gh attestation verify polinrider-v3.1.0-linux-x86_64.tar.gz --repo meSingh/polinrider-scanner
+gh attestation verify "polinrider-v$VERSION-linux-x86_64.tar.gz" --repo meSingh/polinrider-scanner
 ```
 
 If you would rather trust nothing fetched at scan time, the scanner's
@@ -230,7 +234,8 @@ with a stand-in for `gh` that records what would have been sent to GitHub.
 Fixtures carry no payload: the indicators come from the release itself.
 
 ```bash
-gh release download v3.1.0 --repo meSingh/polinrider-scanner --pattern 'polinrider-v3.1.0-linux-*.tar.gz' --dir dist/v3.1.0
+VERSION=$(sed -n 's/.*POLINRIDER_VERSION: "\(.*\)"/\1/p' action.yml)
+gh release download "v$VERSION" --repo meSingh/polinrider-scanner --pattern "polinrider-v$VERSION-linux-*.tar.gz" --dir "dist/v$VERSION"
 test/container.sh dist
 ```
 
