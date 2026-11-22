@@ -48,12 +48,17 @@ itself guarantees cannot.
 A confirmed finding fails the check. The job summary lists each finding and
 what to do next, and each one is annotated on its file.
 
+It checks the commit it runs on. It does not read the repository's other
+branches or older commits: the scanner on a computer does that, where someone
+can act on what it finds.
+
 ## So it doesn't come back
 
 1. **Make the check required.** In your repository's Settings, Rules,
    Rulesets, add a branch ruleset for the default branch with "Require status
    checks to pass" and pick `scan`. An infected push or pull request then
-   cannot merge.
+   cannot merge. The full ruleset, and the command to create it, are in
+   [Block a merge on a finding](https://polinriderscanner.com/docs/action/require/).
 2. **Keep the weekly schedule.** The `schedule:` above runs the scan on
    Mondays even when nobody pushes, so indicators added in a new release reach
    code that has not changed.

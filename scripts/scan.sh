@@ -38,8 +38,11 @@ home="$STATE/home"
 mkdir -p "$home" "$STATE/scan"
 ioc=$(state_get ioc)
 
+# --no-git: the checkout is the commit being checked, so its git history
+# would only repeat the files on disk. Other branches and older commits are
+# for the scan on a computer, where someone can act on them.
 check() { # report-file
-  (cd "$target" && run_polinrider check --fs-only . --ioc "$ioc" --home "$home" --report "$1")
+  (cd "$target" && run_polinrider check --fs-only --no-git . --ioc "$ioc" --home "$home" --report "$1")
 }
 
 rc=0
@@ -90,7 +93,7 @@ root=$(git -C "$target" rev-parse --show-toplevel 2>/dev/null || true)
 # Nothing in this action uploads it.
 mkdir -p "$STATE/fix"
 crc=0
-(cd "$target" && run_polinrider clean --apply . --ioc "$ioc" \
+(cd "$target" && run_polinrider clean --apply --no-git . --ioc "$ioc" \
    --quarantine "$STATE/quarantine" --report "$STATE/fix/clean-report.txt") || crc=$?
 case "$crc" in 0|1|2) ;; *) skip "$say_fix_clean_failed" ;; esac
 has_result "$STATE/fix/clean-report.txt" || skip "$say_fix_clean_failed"
