@@ -37,11 +37,11 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: meSingh/polinrider-action@8c71848593f0e58416c5f61845b3bd2e8080d438 # v1.0.0
+      - uses: meSingh/polinrider-action@cd105ea591bb6d431aae82c316e2c44409e35d48 # v1.1.0
 ```
 
 Use the full commit SHA of the release you want, not a tag: the one above is
-v1.0.0. The [releases page](https://github.com/meSingh/polinrider-action/releases)
+v1.1.0. The [releases page](https://github.com/meSingh/polinrider-action/releases)
 lists each one's SHA. Tags of this action never move, but a SHA is what GitHub
 itself guarantees cannot.
 
@@ -133,7 +133,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: meSingh/polinrider-action@8c71848593f0e58416c5f61845b3bd2e8080d438 # v1.0.0
+      - uses: meSingh/polinrider-action@cd105ea591bb6d431aae82c316e2c44409e35d48 # v1.1.0
         with:
           mode: fix
 ```
@@ -185,7 +185,7 @@ Things to know:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: meSingh/polinrider-action@8c71848593f0e58416c5f61845b3bd2e8080d438 # v1.0.0
+      - uses: meSingh/polinrider-action@cd105ea591bb6d431aae82c316e2c44409e35d48 # v1.1.0
         with:
           comment: true
           sarif-file: polinrider.sarif
